@@ -8,25 +8,30 @@
 
 ## Код основного алгоритма
 ```C#
-int[] GetEvenArray(int[] inputArr)
+using System;
+ 
+string[] array =
 {
-    int[] resultArr = new int[inputArr.Length];
-    int j = 0;
-    for (int i = 0; i < inputArr.Length; i++)
-        if (inputArr[i] % 2 == 0)
-        {
-            resultArr[j] = inputArr[i];
-            j++;
-        }
-    Array.Resize(ref resultArr, j);
-    return resultArr;
+    "hello",
+    "2",
+    "world",
+    ":-)",
+    "1234",
+    "-2"
+};
+ 
+var result = new string[array.Length];
+var realSize = 0;
+foreach (var value in array)
+{
+    if (value.Length <= 3)
+    {
+        result[realSize] = value;
+        realSize++;
+    }
 }
+ 
+Console.WriteLine(string.Join(Environment.NewLine, result, 0, realSize));
+
 ```
 
-## Тесты
-```
-[1, 2, 3, 4] -> [2, 4]
-[1, 3, 4, 5, 7, 1, 3] -> [4]
-[2, -4, 6] -> [2, -4, 6]
-[1, 3, 5] -> []
-```
